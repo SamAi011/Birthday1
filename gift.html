@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Gift For You, mylove 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           VARIABLES & RESET
+        ===================================================== */
+        :root {
+            --pink:    #d14271;
+            --rose:    #ff8fab;
+            --gold:    #ffd700;
+            --light-pink: #fff0f5;
+            --text:    #5c3a45;
+            --sub:     #8c5a6b;
+            --glass:   rgba(255,255,255,0.65);
+            --glass-border: rgba(255,255,255,0.9);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffe1e6 10%, #fff0f3 40%, #fce4ec 100%);
+            background-size: 400% 400%;
+            animation: bgShift 15s ease infinite;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="20" font-size="20">✨</text></svg>'), auto;
+        }
+
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* =====================================================
+           FLOATING ELEMENTS
+        ===================================================== */
+        .floaters { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+        .floater { position: absolute; bottom: -60px; font-size: 2.2rem; opacity: 0.5; animation: floatUp linear infinite; }
+        @keyframes floatUp {
+            0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.7; }
+            90%  { opacity: 0.7; }
+            100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+        }
+
+        .petals { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+        .petal { position: absolute; background: #e63946; border-radius: 150% 0 150% 0; opacity: 0.55; animation: petalFall linear infinite; }
+        @keyframes petalFall {
+            0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.7; }
+            90%  { opacity: 0.7; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* =====================================================
+           UI BUTTONS
+        ===================================================== */
+        .nav-controls {
+            position: fixed; top: 20px; left: 20px; right: 20px;
+            display: flex; justify-content: space-between; z-index: 4000;
+        }
+
+        .circle-btn {
+            width: 50px; height: 50px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(209,66,113,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .circle-btn:hover { transform: scale(1.1); background: #fff; }
+
+        /* =====================================================
+           LAYOUT
+        ===================================================== */
+        .page {
+            position: relative; z-index: 10;
+            display: flex; flex-direction: column;
+            align-items: center;
+            padding: 4rem 1.5rem 6rem;
+            gap: 3.5rem;
+        }
+
+        .hero { text-align: center; animation: fadeDown 1s ease both; }
+        @keyframes fadeDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            color: var(--pink);
+            text-shadow: 0 0 20px rgba(209,66,113,0.3);
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ffb3c6, 0 0 15px #ffb3c6; }
+            to   { text-shadow: 0 0 15px #ff8fab, 0 0 35px #ff8fab; }
+        }
+
+        .hero p { margin-top: 1rem; font-size: 1.2rem; color: var(--sub); font-weight: 300; }
+
+        /* =====================================================
+           GIFT BOX
+        ===================================================== */
+        .gift-stage { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+        .gift-wrap {
+            position: relative; width: 180px; height: 180px;
+            cursor: pointer; filter: drop-shadow(0 20px 40px rgba(209,66,113,0.45));
+            transition: filter 0.3s; user-select: none;
+        }
+        .gift-wrap:hover { filter: drop-shadow(0 25px 50px rgba(209,66,113,0.6)); }
+
+        .g-base {
+            position: absolute; bottom: 0; left: 0; width: 180px; height: 145px;
+            background: linear-gradient(135deg, #ffb3c6, #ff8fab, #d14271);
+            border-radius: 0 0 20px 20px; overflow: hidden;
+        }
+        .g-base::before { content:''; position:absolute; left:50%; top:0; transform:translateX(-50%); width:25px; height:100%; background:rgba(255,255,255,0.4); }
+        .g-base::after { content:''; position:absolute; top:35%; left:0; width:100%; height:25px; background:rgba(255,255,255,0.4); }
+
+        .g-lid {
+            position: absolute; top: 0; left: -9px; width: 198px; height: 60px;
+            background: linear-gradient(135deg, #ff5c8a, #c8004b);
+            border-radius: 10px; z-index: 5;
+            transform-origin: left center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .g-lid::before { content:''; position:absolute; left:50%; top:0; transform:translateX(-50%); width:25px; height:100%; background:rgba(255,255,255,0.4); }
+
+        .g-bow { position: absolute; top: -35px; left: 50%; transform: translateX(-50%); width: 80px; height: 40px; display: flex; justify-content: center; }
+        .bow-l, .bow-r { width: 32px; height: 25px; background: linear-gradient(135deg, #ff3d73, #9c0033); border-radius: 50%; box-shadow: inset 0 3px 6px rgba(0,0,0,0.25); }
+        .bow-l { transform: rotate(-40deg) translateX(6px); }
+        .bow-r { transform: rotate(40deg) translateX(-6px); }
+        .bow-c { position: absolute; width: 18px; height: 18px; background: #9c0033; border-radius: 50%; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+        @keyframes giftShake { 0%,100%{transform:rotate(0deg);} 15%{transform:rotate(-9deg);} 30%{transform:rotate(9deg);} 45%{transform:rotate(-6deg);} 60%{transform:rotate(6deg);} }
+        @keyframes lidFly { 100% { transform: rotate(-150deg) translateY(-60px) translateX(-15px); opacity: 0; } }
+        .gift-wrap.shaking { animation: giftShake 0.6s ease-in-out; }
+        .gift-wrap.opened .g-lid { animation: lidFly 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        .gift-hint { font-size: 1.1rem; color: var(--sub); text-align: center; max-width: 280px; line-height: 1.5; min-height: 3rem; }
+        .click-indicator { display: flex; gap: 10px; }
+        .click-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(209,66,113,0.2); border: 2px solid rgba(209,66,113,0.3); transition: 0.3s; }
+        .click-dot.active { background: var(--pink); border-color: var(--pink); transform: scale(1.4); }
+
+        /* =====================================================
+           REVEALED CONTENT
+        ===================================================== */
+        .revealed {
+            width: 100%; max-width: 950px;
+            display: flex; flex-direction: column; align-items: center; gap: 4rem;
+            opacity: 0; transform: translateY(50px); pointer-events: none;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .revealed.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+        .message-card {
+            background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border); border-radius: 30px;
+            padding: 3.5rem; text-align: center; max-width: 800px;
+            box-shadow: 0 15px 45px rgba(224,150,169,0.3);
+        }
+        .message-card .pulse { font-size: 4rem; animation: heartbeat 1.5s infinite; display: block; margin-bottom: 1.5rem; }
+        @keyframes heartbeat { 0%,100%{transform:scale(1);} 20%,60%{transform:scale(1.2);} }
+
+        .message-card h2 { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: var(--pink); margin-bottom: 1.2rem; }
+        .message-card p { font-size: 1.3rem; line-height: 1.9; font-weight: 300; }
+        .message-card .signature { display: block; margin-top: 2rem; font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--pink); }
+
+        .gallery-grid { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 750px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 450px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+        .frame {
+            background: #fff; padding: 10px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(224,150,169,0.25);
+            transition: 0.4s; cursor: pointer; animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+        .frame:hover { transform: scale(1.06) translateY(-5px); z-index: 30; box-shadow: 0 20px 50px rgba(224,150,169,0.45); }
+        .frame:nth-child(even) { transform: rotate(-2deg); }
+        .frame:nth-child(odd) { transform: rotate(2deg); }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; } }
+
+        .frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; min-height: 15vw; }
+
+        /* =====================================================
+           LIGHTBOX
+        ===================================================== */
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); z-index: 5000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; }
+        .lightbox.active { opacity: 1; pointer-events: auto; }
+        .lb-img { max-width: 85vw; max-height: 75vh; border: 6px solid #fff; border-radius: 10px; box-shadow: 0 0 50px rgba(255,143,171,0.5); transform: scale(0.85); transition: 0.3s; }
+        .lightbox.active .lb-img { transform: scale(1); }
+        .lb-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 4rem; cursor: pointer; }
+        .lb-caption { position: absolute; bottom: 30px; font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #fff; text-shadow: 0 0 15px var(--pink); text-align: center; padding: 0 20px; }
+
+        .click-heart { position: fixed; pointer-events: none; z-index: 9999; font-size: 1.6rem; animation: burst 1s ease-out forwards; }
+        @keyframes burst { 0%{opacity:1; transform:scale(0.5);} 100%{opacity:0; transform:translate(var(--dx), var(--dy)) scale(1.6);} }
+
+        #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 4500; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-controls">
+        <a href="index.html" class="circle-btn" title="Back to Home">🏠</a>
+        <button id="music-toggle" class="circle-btn" title="Toggle Music">🎵</button>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+    <div class="floaters" id="floaters"></div>
+    <div class="petals" id="petals"></div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lb-close" id="lb-close">&times;</span>
+        <img class="lb-img" id="lb-img" src="">
+        <p class="lb-caption" id="lb-caption"></p>
+    </div>
+
+    <div class="page">
+        <header class="hero">
+            <h1>🎁 A Gift From My Heart</h1>
+            <p>I have something special for you, click the box below! 💖</p>
+        </header>
+
+        <div class="gift-stage">
+            <div class="gift-wrap" id="giftBox">
+                <div class="g-lid"><div class="g-bow"><div class="bow-l"></div><div class="bow-r"></div><div class="bow-c"></div></div></div>
+                <div class="g-base"></div>
+            </div>
+            <p class="gift-hint" id="giftHint">Tap the gift box to open it! 🎀</p>
+            <div class="click-indicator">
+                <div class="click-dot" id="dot1"></div>
+                <div class="click-dot" id="dot2"></div>
+                <div class="click-dot" id="dot3"></div>
+            </div>
+        </div>
+
+        <div class="revealed" id="revealed">
+            <div class="message-card">
+                <span class="pulse">💖</span>
+                <h2>Happy Birthday, mylove! 🎂</h2>
+                <p>
+                    Every second spent with you is a gift I never take for granted. 
+                    From our first meeting at <strong>Prarambh</strong> to all the incredible adventures we've shared, 
+                    you have filled my life with more joy than I ever thought possible.
+                    <br><br>
+                    These memories are my treasure. You are my home. I love you endlessly!
+                </p>
+                <span class="signature">— Forever and Always yours ❤️</span>
+            </div>
+            <h2 class="hero" style="font-family:'Dancing Script'; color:var(--pink); font-size:3rem">Our Gallery of Love ✨</h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="src/aud.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const ALL_IMAGES = ["src/1000022853.jpg","src/1000022857.jpg","src/1000024725.jpg","src/1000025603.jpg","src/1000026163.jpg","src/1000026210.jpg","src/1000026211.jpg","src/1000026214.jpg","src/1000029508.jpg","src/1000029509.jpg","src/1000029511.jpg","src/1000029548.jpg","src/1000029558.jpg","src/1000030957.jpg","src/1000030960.jpg","src/1000030964.jpg","src/1000030984.jpg","src/1000031001.jpg","src/1000031004.jpg","src/1000031008.jpg","src/1000031011.jpg","src/1000031373.jpg","src/1000031385.jpg","src/1000031387.jpg","src/1000031391.jpg","src/1000031401.jpg","src/1000032449.jpg","src/1000033161.jpg","src/1000033162.jpg","src/1000033164.jpg","src/1000033206.jpg","src/1000033269.jpg","src/1000033272.jpg","src/1000033311.jpg","src/1000033334.jpg","src/1000033345.jpg","src/1000033521.jpg","src/1000033995.jpg","src/1000033999.jpg"];
+        const CAPTIONS = ["You are my favorite person! ❤️", "I love this moment! ✨", "So beautiful! 💖", "My forever! 🌹", "Best day ever! 🥰"];
+        const grid = document.getElementById('galleryGrid'), box = document.getElementById('giftBox'), hint = document.getElementById('giftHint'), music = document.getElementById('bg-music'), mBtn = document.getElementById('music-toggle');
+        let clicks = 0, playing = false, gImages = [];
+
+        function playPop(f=600) {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = ctx.createOscillator(), g = ctx.createGain();
+            o.type='sine'; o.frequency.setValueAtTime(f, ctx.currentTime);
+            o.frequency.exponentialRampToValueAtTime(100, ctx.currentTime+0.1);
+            g.gain.setValueAtTime(0.3, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime+0.1);
+            o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime+0.1);
+        }
+
+        mBtn.onclick = () => { 
+            playing ? music.pause() : music.play();
+            playing = !playing; mBtn.textContent = playing ? '⏸️' : '🎵';
+        };
+
+        document.onclick = (e) => {
+            if (['BUTTON','A','IMG'].includes(e.target.tagName)) return;
+            for(let i=0;i<6;i++){
+                const h = document.createElement('span'); h.className='click-heart'; h.textContent='💖';
+                h.style.left=e.clientX+'px'; h.style.top=e.clientY+'px';
+                const a = Math.random()*Math.PI*2; const d = Math.random()*70+30;
+                h.style.setProperty('--dx', Math.cos(a)*d+'px'); h.style.setProperty('--dy', (Math.sin(a)*d-40)+'px');
+                document.body.appendChild(h); h.onanimationend = () => h.remove();
+            }
+        };
+
+        const HINTS = ["Tap the box! 🎀", "Almost there! 🎁", "One last click! 🎉", "Surprise! 🎊"];
+        box.onclick = () => {
+            if (clicks >= 3) return;
+            clicks++; document.getElementById(`dot${clicks}`).classList.add('active');
+            hint.textContent = HINTS[clicks];
+            if (clicks < 3) {
+                playPop(400+clicks*100); box.classList.add('shaking');
+                box.onanimationend = () => box.classList.remove('shaking');
+            } else {
+                playPop(800); box.classList.add('opened');
+                confetti({particleCount:150, spread:70, origin:{y:0.6}, colors:['#ffb3c6','#d14271','#ffd700']});
+                gImages = ALL_IMAGES.sort(()=>Math.random()-0.5).slice(0,9);
+                gImages.forEach((s,i) => {
+                    const f = document.createElement('div'); f.className='frame'; 
+                    f.innerHTML = `<img src="${s}" loading="lazy">`;
+                    f.onclick = () => {
+                        document.getElementById('lb-img').src=s;
+                        document.getElementById('lb-caption').textContent=CAPTIONS[i%CAPTIONS.length];
+                        document.getElementById('lightbox').classList.add('active');
+                    };
+                    grid.appendChild(f);
+                });
+                setTimeout(() => { document.getElementById('revealed').classList.add('show'); }, 600);
+            }
+        };
+
+        document.getElementById('lb-close').onclick = () => document.getElementById('lightbox').classList.remove('active');
+        
+        function f() { const e=document.createElement('div'); e.className='floater'; e.textContent='💖'; e.style.left=Math.random()*100+'vw'; e.style.animationDuration=Math.random()*10+10+'s'; document.getElementById('floaters').appendChild(e); setTimeout(()=>e.remove(),20000); }
+        function p() { const e=document.createElement('div'); e.className='petal'; e.style.left=Math.random()*100+'vw'; e.style.width=Math.random()*10+5+'px'; e.style.height=e.style.width; e.style.animationDuration=Math.random()*5+5+'s'; document.getElementById('petals').appendChild(e); setTimeout(()=>e.remove(),10000); }
+        setInterval(f, 3000); setInterval(p, 500);
+    </script>
+</body>
+</html>

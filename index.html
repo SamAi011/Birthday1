@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday mylove</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Night Mode Toggle -->
+    <button id="theme-toggle" class="theme-toggle" title="Toggle Night Mode">🌙</button>
+
+    <!-- Stars container (for night mode) -->
+    <div id="stars-container" class="stars-container"></div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Floating Balloons Background -->
+    <div class="balloons-container">
+        <div class="balloon balloon1">🎈</div>
+        <div class="balloon balloon2">🎁</div>
+        <div class="balloon balloon3">💖</div>
+        <div class="balloon balloon4">🎈</div>
+        <div class="balloon balloon5">🎂</div>
+    </div>
+
+    <div class="container">
+        <header class="hero">
+            <h1 class="glow-text">🎉 Happy Birthday, mylove! 🎂</h1>
+            <p class="subtitle">18th March 2026 • My love, my everything, today is all about you! 💖</p>
+        </header>
+
+        <!-- Feature 6: Random Memory Popups -->
+        <div id="random-popup" class="random-popup hidden glass-panel">
+            <span class="close-popup" id="close-popup">&times;</span>
+            <img id="popup-img" class="popup-img" src="" alt="A special memory">
+            <p id="popup-msg" class="popup-msg">A special memory just popped up! 🥰</p>
+        </div>
+
+        <section class="timer-section glass-panel">
+            <h2>Time Until The Big Day!</h2>
+            <div id="countdown" class="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+            <p id="bday-message" class="hidden glow-text custom-bday-msg">It's Your Birthday! 🎉</p>
+        </section>
+
+        <section class="message-section glass-panel">
+            <div class="heart-icon">💖</div>
+            <p class="heartfelt-message">
+                "mylove, you mean the world to me. Every day with you is a blessing, and today we celebrate YOU! Wishing you all the happiness and love today and always. Happy Birthday, my love!"
+            </p>
+        </section>
+
+        <!-- Feature 1: Romantic Music Player -->
+        <div class="music-player glass-panel">
+            <div class="player-controls">
+                <span class="music-icon">🎵</span>
+                <p>Play Our Song</p>
+                <button id="play-btn" class="icon-btn">▶️</button>
+            </div>
+            <audio id="bg-music" loop>
+                <source src="src/aud.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <!-- Feature 2: "Reasons I Love You" Carousel -->
+        <section class="reasons-carousel glass-panel">
+            <h2>Reasons I Love You</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn">❮</button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide">
+                            <div class="reason-card">"Being with you feels like every day is a new adventure, and I just want to be the hero in your story!" 😘</div>
+                        </li>
+                        <li class="carousel-slide">
+                            <div class="reason-card">"If you were my playlist, every song would be about you!" 🎶❤️</div>
+                        </li>
+                        <li class="carousel-slide">
+                            <div class="reason-card">"You're the best plot twist in my life, and I'm just here wondering what other surprises you've got up your sleeve!" 😏</div>
+                        </li>
+                        <li class="carousel-slide">
+                            <div class="reason-card">"I thought love was just in fairy tales, then you came along and made it my reality!" 🌟</div>
+                        </li>
+                        <li class="carousel-slide">
+                            <div class="reason-card">"Without you, my world wasn't anything special... but now it's all magical!" ✨</div>
+                        </li>
+                    </ul>
+                </div>
+                <button class="carousel-btn next-btn">❯</button>
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-indicator current-indicator"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+            </div>
+        </section>
+
+        <!-- Feature NEW: Interactive Relationship Timeline -->
+        <section class="timeline-section glass-panel">
+            <h2>Our Story So Far 💕</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">✨</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">The Spark</span>
+                        <h3>Prarambh Fest</h3>
+                        <p>The college fest was alive with energy, students from different colleges coming together. As soon as I stepped in, I noticed you – your confidence and curiosity stood out. 🌟</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">🚶‍♀️🚶‍♂️</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Walking Together</span>
+                        <h3>Road Walk</h3>
+                        <p>We joined the road walk, mingling with people and laughing together. It was a perfect blend of fun and connection, but I couldn’t help but notice how I felt drawn to you. 👣</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">🤝</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">A First Spark</span>
+                        <h3>The Hand Touch</h3>
+                        <p>In the middle of the excitement, I found myself trying to reach for your hand, not planned, just a natural instinct to connect. Every time our hands almost brushed, I felt a spark. ⚡</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">😏</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">The Teasing</span>
+                        <h3>Friends Noticing</h3>
+                        <p>I didn’t tell my friends about the little moments with you, but they could sense something was different. They teased me, but I didn't mind; I was just enjoying being near you. ✨</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">🏙️</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Night Walk</span>
+                        <h3>City Exploration</h3>
+                        <p>Later, we decided to take a walk around the city – first to Iskcon Temple, then to the Center Garden. The night was peaceful, and it felt like we were in our own little world, just talking and exploring. 🌙</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">⛲</div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Time Stood Still</span>
+                        <h3>Fountain Moment</h3>
+                        <p>We ended up sitting by the fountain, the cool night air around us. It felt like time slowed down, and we were the only ones there, soaking in the quiet and each other’s company. 💫</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature NEW: 3D Gift Box Surprise -->
+        <section class="gift-section glass-panel">
+            <h2>A Special Surprise For You 🎁</h2>
+            <p class="gift-hint">Click the gift box to unwrap it!</p>
+            <div id="gift-box-wrapper" class="gift-box-wrapper">
+                <div id="gift-box" class="gift-box">
+                    <div class="gift-lid" id="gift-lid">
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                        <div class="gift-bow">
+                            <div class="bow-left"></div>
+                            <div class="bow-right"></div>
+                            <div class="bow-center"></div>
+                        </div>
+                    </div>
+                    <div class="gift-base">
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                </div>
+                <p id="gift-click-hint" class="gift-click-counter">Click once to shake... twice... third click unwraps! 🎀</p>
+            </div>
+            <!-- The hidden surprise content -->
+            <div id="surprise-content" class="surprise-content hidden glass-panel">
+                <h3>🎉 Happy Birthday, My Love! 🎉</h3>
+                <p>
+                    You are my sun, my moon, and all my stars. Every day I wake up grateful to have you in my life.
+                    This website is just a tiny expression of the infinite love I have for you. Today, every wish you
+                    make, every dream you dream — I want it all to come true. Here's to you, mylove. 
+                    You are my forever and always. ❤️
+                </p>
+            </div>
+        </section>
+
+        <section class="gallery-section glass-panel">
+            <h2>Our Beautiful Memories</h2>
+            <div class="photo-grid" id="dynamic-photo-grid">
+                <!-- 6 dynamic image slots will be populated via JavaScript -->
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">✨</div></div>
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">💖</div></div>
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">🎈</div></div>
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">✨</div></div>
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">💖</div></div>
+                <div class="image-frame"><img src="" class="personal-image" loading="lazy" alt="Memory"><div class="frame-decor">🎈</div></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Made with ❤️ just for you.</p>
+    </footer>
+
+    <!-- Feature 3: Photo Lightbox -->
+    <div id="lightbox" class="lightbox hidden">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged Memory">
+            <p id="lightbox-wish" class="lightbox-wish">Happy Birthday!</p>
+        </div>
+    </div>
+
+    <!-- Feature 4: Falling Rose Petals Container -->
+    <div id="petals-container" class="petals-container"></div>
+
+    <!-- Confetti.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
