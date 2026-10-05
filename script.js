@@ -48,8 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         confetti({ particleCount: 80, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#ffb6c1','#ffc0cb','#ffd700','#ffffff'] });
     }
 
-    setInterval(randomConfetti, 12000);
-    setTimeout(randomConfetti, 1000);
+    // Removed random background confetti as per user request
+    // setInterval(randomConfetti, 12000);
+    // setTimeout(randomConfetti, 1000);
 
     function triggerConfettiCelebration() {
         if (typeof confetti !== "function") return;
@@ -179,14 +180,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------------------------------------------------------------- //
 
     const allImages = [
-        "src/1000022853.jpg", "src/1000022857.jpg", "src/1000024725.jpg", "src/1000025603.jpg", "src/1000026163.jpg",
-        "src/1000026210.jpg", "src/1000026211.jpg", "src/1000026214.jpg", "src/1000029508.jpg", "src/1000029509.jpg",
-        "src/1000029511.jpg", "src/1000029548.jpg", "src/1000029558.jpg", "src/1000030957.jpg", "src/1000030960.jpg",
-        "src/1000030964.jpg", "src/1000030984.jpg", "src/1000031001.jpg", "src/1000031004.jpg", "src/1000031008.jpg",
-        "src/1000031011.jpg", "src/1000031373.jpg", "src/1000031385.jpg", "src/1000031387.jpg", "src/1000031391.jpg",
-        "src/1000031401.jpg", "src/1000032449.jpg", "src/1000033161.jpg", "src/1000033162.jpg", "src/1000033164.jpg",
-        "src/1000033206.jpg", "src/1000033269.jpg", "src/1000033272.jpg", "src/1000033311.jpg", "src/1000033334.jpg",
-        "src/1000033345.jpg", "src/1000033521.jpg", "src/1000033995.jpg", "src/1000033999.jpg"
+        "images/photo_8_2026-10-05_22-21-24.jpg",
+        "images/photo_9_2026-10-05_22-21-24.jpg",
+        "images/photo_10_2026-10-05_22-21-24.jpg",
+        "images/photo_12_2026-10-05_22-21-24.jpg",
+        "images/photo_13_2026-10-05_22-21-24.jpg",
+        "images/photo_14_2026-10-05_22-21-24.jpg",
+        "images/photo_16_2026-10-05_22-21-24.jpg",
+        "images/photo_17_2026-10-05_22-21-24.jpg",
+        "images/photo_18_2026-10-05_22-21-24.jpg",
+        "images/photo_21_2026-10-05_22-21-24.jpg",
+        "images/photo_23_2026-10-05_22-21-24.jpg",
+        "images/photo_24_2026-10-05_22-21-24.jpg",
+        "images/photo_25_2026-10-05_22-21-24.jpg",
+        "images/photo_26_2026-10-05_22-21-24.jpg",
+        "images/photo_27_2026-10-05_22-21-24.jpg",
+        "images/photo_28_2026-10-05_22-21-24.jpg",
+        "images/photo_30_2026-10-05_22-21-24.jpg",
+        "images/photo_31_2026-10-05_22-21-24.jpg",
+        "images/photo_32_2026-10-05_22-21-24.jpg",
+        "images/photo_33_2026-10-05_22-21-24.jpg",
+        "images/photo_34_2026-10-05_22-21-24.jpg",
+        "images/photo_35_2026-10-05_22-21-24.jpg",
+        "images/photo_36_2026-10-05_22-21-24.jpg"
     ];
 
     // Preload

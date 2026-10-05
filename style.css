@@ -1234,3 +1234,164 @@ body.night-mode .surprise-content {
     /* Night Mode Toggle */
     .theme-toggle { top: 12px; right: 12px; width: 44px; height: 44px; font-size: 1.3rem; }
 }
+
+/* ============================================
+   HANGING PHOTO GALLERY BACKGROUND
+   ============================================ */
+.hero-background-gallery {
+    position: relative;
+    width: 100%;
+    margin-top: -1rem;
+    padding-bottom: 2rem;
+    border-radius: 24px;
+    z-index: 10; 
+    
+    /* Romantic soft glow background */
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 154, 175, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 228, 225, 0.5) 0%, transparent 60%);
+}
+
+body.night-mode .hero-background-gallery {
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(180, 100, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 168, 255, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(130, 70, 200, 0.3) 0%, transparent 60%);
+}
+
+/* Floating tiny hearts in the background */
+.hero-background-gallery::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml;utf8,<svg width='80' height='80' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><path d='M30 18c-3-5-10-5-13-1-3 4-2 9 0 12l13 13 13-13c2-3 3-8 0-12-3-4-10-4-13 1z' fill='rgba(255,255,255,0.3)'/></svg>");
+    background-size: 80px 80px;
+    border-radius: 24px;
+    z-index: -1;
+    animation: floatHearts 15s linear infinite;
+}
+
+@keyframes floatHearts {
+    0% { background-position: 0 0; }
+    100% { background-position: 80px 80px; }
+}
+
+/* Make photos themselves interactive so hover works where container doesn't block them */
+.hanging-photo {
+    pointer-events: auto;
+}
+
+.hanging-gallery-container {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+.fairy-light-wire {
+    position: absolute;
+    top: 20px;
+    left: -5%;
+    width: 110%;
+    height: 2px;
+    background: #222;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 1;
+    transform: translateY(10px) rotate(1deg);
+}
+
+.hanging-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    z-index: 2;
+    padding-top: 30px;
+}
+
+.hanging-photo {
+    position: relative;
+    margin-top: var(--drop, 0px);
+    transform-origin: top center;
+    transform: rotate(var(--rotation, 0deg));
+    animation: swing 6s ease-in-out infinite alternate;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.hanging-photo:hover {
+    transform: scale(1.15) rotate(0deg) !important;
+    animation-play-state: paused;
+    z-index: 10;
+}
+
+.clip {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 30px;
+    background: #333;
+    border-radius: 2px;
+    z-index: 3;
+}
+
+.clip::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fffaa3;
+    box-shadow: 0 0 15px 5px rgba(255, 235, 100, 0.9);
+}
+
+.polaroid {
+    background: #fdfdfd;
+    padding: 12px 12px 45px 12px;
+    border-radius: 2px;
+    box-shadow: 3px 6px 15px rgba(0,0,0,0.4);
+    width: 190px;
+    position: relative;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)' opacity='0.05'/></svg>");
+}
+
+.hanging-photo:hover .polaroid {
+    box-shadow: 6px 15px 30px rgba(0,0,0,0.6);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+@keyframes swing {
+    0% { transform: rotate(calc(var(--rotation) - 2.5deg)); }
+    100% { transform: rotate(calc(var(--rotation) + 2.5deg)); }
+}
+
+@media (max-width: 768px) {
+    .polaroid { width: 150px; padding: 10px 10px 35px 10px; }
+    .polaroid img { height: 140px; }
+    .hanging-photos { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+    .polaroid { width: 120px; padding: 8px 8px 30px 8px; }
+    .polaroid img { height: 110px; }
+    .hanging-photos { gap: 15px; }
+    .fairy-light-wire { top: 15px; }
+    .clip { top: -20px; height: 25px; }
+}
