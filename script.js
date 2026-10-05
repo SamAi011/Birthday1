@@ -529,4 +529,66 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ================================================================ //
+    // NEW FEATURE 5: INTRO OVERLAY (WELCOME SCREEN)
+    // ================================================================ //
+
+    const introOverlay = document.getElementById('intro-overlay');
+    const mainIntroGift = document.getElementById('main-intro-gift');
+    const introMessage = document.getElementById('intro-message');
+    const enterSiteBtn = document.getElementById('enter-site-btn');
+    const introGiftBoxWrapper = document.getElementById('intro-gift-box');
+
+    // Make sure page can't scroll while intro is visible
+    if (introOverlay) {
+        document.body.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
+    }
+
+    if (mainIntroGift) {
+        mainIntroGift.addEventListener('click', () => {
+            // open gift immediately on first tap
+            playPopSound(800);
+            mainIntroGift.classList.add('opened');
+            mainIntroGift.style.cursor = 'default';
+            
+            // Confetti burst
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 150,
+                    spread: 120,
+                    origin: { y: 0.5 },
+                    colors: ['#ffb3c6', '#d14271', '#ffd700', '#ffffff', '#ff8fab']
+                });
+            }
+
+            // Hide gift box and show the nice message
+            setTimeout(() => {
+                introGiftBoxWrapper.style.display = 'none';
+                introMessage.classList.remove('hidden');
+            }, 800);
+        });
+    }
+
+    if (enterSiteBtn) {
+        enterSiteBtn.addEventListener('click', () => {
+            playPopSound(600);
+            introOverlay.classList.add('hidden-overlay');
+            
+            setTimeout(() => {
+                introOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // restore scroll
+                
+                // Automatically start the romantic music when they enter!
+                const bgMusic = document.getElementById('bg-music');
+                const playBtn = document.getElementById('play-btn');
+                if (bgMusic && bgMusic.paused) {
+                    bgMusic.play().catch(e => console.log("Audio play failed, user must interact again:", e));
+                    if (playBtn) playBtn.textContent = "⏸️";
+                    isPlaying = true;
+                }
+            }, 1000);
+        });
+    }
+
 });

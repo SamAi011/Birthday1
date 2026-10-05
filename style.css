@@ -1282,6 +1282,101 @@ body.night-mode .hero-background-gallery {
     pointer-events: auto;
 }
 
+/* ============================================
+   INTRO OVERLAY (WELCOME SCREEN)
+   ============================================ */
+.intro-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #ffe1e6 0%, #fff0f3 50%, #fdfbfb 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+body.night-mode .intro-overlay {
+    background: linear-gradient(135deg, #0b0b1a 0%, #1a1a3a 50%, #2a1b38 100%);
+}
+
+.intro-overlay.hidden-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05);
+}
+
+.intro-gift-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.intro-gift-hint {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    animation: pulseGlow 2s infinite;
+}
+body.night-mode .intro-gift-hint {
+    color: var(--night-primary);
+}
+
+.intro-message {
+    text-align: center;
+    animation: scaleUpFadeIn 1s ease-out;
+    padding: 0 20px;
+}
+
+.intro-message h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(209, 66, 113, 0.4);
+}
+body.night-mode .intro-message h1 {
+    color: var(--night-primary);
+    text-shadow: 0 0 15px rgba(180, 100, 255, 0.5);
+}
+
+.enter-site-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(209, 66, 113, 0.5);
+    transition: all 0.3s ease;
+}
+body.night-mode .enter-site-btn {
+    background: var(--night-primary);
+    box-shadow: 0 5px 20px rgba(180, 100, 255, 0.5);
+}
+
+.enter-site-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(209, 66, 113, 0.6);
+}
+
+@keyframes scaleUpFadeIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .intro-message h1 {
+        font-size: 2.5rem;
+    }
+    .enter-site-btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+}
+
 .hanging-gallery-container {
     position: relative;
     width: 100%;
